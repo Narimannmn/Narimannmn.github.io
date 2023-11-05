@@ -1,0 +1,153 @@
+﻿html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    outline: none;
+}
+
+html {
+    height: 100%;
+}
+/* always display scrollbars */
+body {
+    line-height: 1;
+    font-family: Arial, Tahoma, Verdana, sans-serif;
+}
+li{
+    list-style-type: none;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+.nav-link span{
+    display: no;
+    font-weight: bold;
+    font-family: "Century Gothic", sans-serif;  
+    color: #32B6E1;
+}
+
+.nav-link img{
+    height: 25px;
+}
+#navbar-brand{
+    height: 60px;
+}
+.navbar-toggler-icon{
+    height: 25px;
+}
+.search{
+    width: 50%;
+    height: 40px;
+    border-radius: 50px;
+    padding-left: 15px;
+}
+.search-submit{
+    width: 30%;
+    height: 40px;
+    background-color: #32B6E1;
+    border-radius: 50px;
+    color: #ffffff;
+}
+.discount {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red; 
+    color: white; 
+    padding: 5px 10px;
+    border-radius: 0 0 0 5px; 
+}
+@media (max-width:767px){
+    .form-check{
+        width:100%;
+    }
+}
+#myForm .form-group input{
+    position: relative;
+}
+#myForm .form-group input::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    background-color: aqua;
+    width: 100px;
+    height: 20px;
+    border: 1px solid aqua;
+    
+}
+.old-cost{
+    text-decoration: line-through;
+    font-size: 0.8em; 
+    margin-left: 20px;
+}
+#countdown {
+    background-color: #E30505;
+    font-size: 1.5rem;
+    margin-bottom: 50px;
+}
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-125%);
+  }
+}
+.myCarousel{
+    white-space: nowrap;
+    overflow: hidden;
+}
+.brands{
+    display: inline-block;
+    animation: 10s slide linear infinite;
+    white-space: nowrap;
+}
+.brands img{
+    height: 200px;
+}
+.cart-img{
+    width: 100px;
+}
+.search-block{
+    position: relative;
+}
+.product-list{
+    display: none;
+    position: absolute;
+    width: 45%;
+    border: 1px solid black;
+    border-radius: 14px;
+    padding: 3px 12px;
+    top: 0;
+    transform: translateY(50px);
+    z-index: 99;
+    background-color: #ffffff;
+}
+.product{
+    text-align: center;
+    width: 100%;
+    border-bottom:1px solid black ;
+}
+.new-cost::after{
+    content: "tg";
+}
+.old-cost::after{
+    content: "tg";
+}
+.fa-solid{
+    color: #32B6E1;
+}
+.no-ath-cart:hover::after{
+    content: "Click User Icon to view cart!";
+    background-color: white;
+    border: 1px solid #32B6E1;
+    border-radius: 0px 50px 50px 50px;
+    position: absolute;
+    bottom: -5px;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 12px;
+}

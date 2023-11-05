@@ -1,0 +1,191 @@
+<div class="container-fluid">
+    <h4 class="fw-bold fs-3 text-uppercase">Filters</h4>
+    <div class="row">
+        <div class="dropdown mb-4">
+            <button class="btn btn-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Clothes
+            </button>
+            <ul class="dropdown-menu w-100">
+                <li>
+                    <a class="dropdown-item">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" onclick="filter('Hats')">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Hats
+                            </label>
+                        </div>
+
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" >
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" onclick="filter('Tops')">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Tops
+                            </label>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" onclick="filter('Underwear')">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Underwear
+                            </label>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" >
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" onclick="filter('Sneakers')">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Sneakers
+                            </label>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="dropdown mb-4">
+            <button class="btn btn-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Brands
+            </button>
+            <ul class="dropdown-menu w-100">
+                <li>
+                    <a class="dropdown-item">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault"onclick="filter('Calvin')">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Calvin Klein
+                            </label>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" >
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" onclick="filter('Hugo')">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Hugo Boss
+                            </label>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" onclick="filter('Lacoste')">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Lacoste
+                            </label>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" >
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" onclick="filter('Emporio')">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Emporio Armani
+                            </label>
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="dropdown-item" >
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" onclick="filter('Gant')">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Gant
+                            </label>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" ">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" onclick="filter('Tommy')">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Tommy Hilfiger
+                            </label>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" >
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" onclick="filter('Armani')">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Armani Exchange
+                            </label>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" >
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" onclick="filter('Timberland')">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Timberland
+                            </label>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="dropdown mb-4">
+            <button class="btn btn-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Discounts
+            </button>
+            <ul class="dropdown-menu w-100">
+                <li>
+                    <a class="dropdown-item" >
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" onclick="filter('0-0')">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                No discount
+                            </label>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" onclick="filter('%')">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Discount 10% +
+                            </label>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" >
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" onclick="filter('0-0')">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Installmental plan
+                            </label>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" >
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" onclick="filter('%')">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                without Installmental plan
+                            </label>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
