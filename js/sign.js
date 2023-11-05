@@ -106,21 +106,33 @@ function signup(e) {
 	const nameInput = document.getElementById('name')
 	const passwordInput = document.getElementById('password1')
 	const passwordInput2 = document.getElementById('password2')
+	const namePattern = /^[a-zA-Z\s]+$/
+	const passwordPattern =
+		/(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}/
+	const phoneNumberPattern = /^\d{11}$/
 
 	phoneInput.classList.remove('is-invalid')
 	nameInput.classList.remove('is-invalid')
 	passwordInput.classList.remove('is-invalid')
 	passwordInput2.classList.remove('is-invalid')
-	if (!(passwordInput.value === passwordInput2.value)) {
-		PasswordInput.classList.add('is-invalid')
+
+	if (
+		!(
+			passwordInput.value === passwordInput2.value &&
+			passwordInput.value.match(passwordPattern)
+		)
+	) {
+		passwordInput.classList.add('is-invalid')
+		passwordInput2.classList.add('is-invalid')
 		return false
 	}
-	if (phoneInput.value.trim() === '') {
+
+	if (!phoneNumberPattern.test(phoneInput.value)) {
 		phoneInput.classList.add('is-invalid')
 		return false
 	}
 
-	if (nameInput.value.trim() === '') {
+	if (!nameInput.value.match(namePattern)) {
 		nameInput.classList.add('is-invalid')
 		return false
 	}
@@ -128,7 +140,7 @@ function signup(e) {
 	let user = {
 		phone: phoneInput.value,
 		name: nameInput.value,
-		password: passwordInput.value,
+		password: hash(passwordInput.value),
 	}
 	let users = JSON.parse(localStorage.getItem('users')) || []
 	users.push(user)
@@ -137,6 +149,18 @@ function signup(e) {
 	alerttext('You have been succesfully sign up', 4000)
 	setTimeout(3000)
 	location.replace('index.html')
+}
+function hash(password){
+	var hash = 0,
+			i,
+			chr
+		if (this.length === 0) return hash
+		for (i = 0; i < this.length; i++) {
+			chr = this.charCodeAt(i)
+			hash = (hash << 5) - hash + chr
+			hash |= 0 
+		}
+		return hash
 }
 function setRole(level) {
 	sessionStorage.setItem('role', level)
@@ -147,13 +171,10 @@ function signin(e) {
 	const passwordInput = document.getElementById('inpassword1')
 	phoneInput.classList.remove('is-invalid')
 	passwordInput.classList.remove('is-invalid')
-	if (phoneInput.value.trim() === '') {
-		phoneInput.classList.add('is-invalid')
-		return false
-	}
+
 	let users = JSON.parse(localStorage.getItem('users')) || []
 	const userExists = users.some(
-		user => user.phone === phoneInput.value && user.password === passwordInput.value 	
+		user => user.phone === phoneInput.value && user.password === hash(passwordInput.value) 	
 	)
 	if (userExists) {
 		alerttext('You successfully logged in!', 2000)

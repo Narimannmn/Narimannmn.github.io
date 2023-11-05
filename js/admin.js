@@ -25,7 +25,7 @@ const reloadUsers = () => {
 		                <th contenteditable>${count}</th>
 		                <th contenteditable>${value.name}</th>
 		                <th contenteditable>${value.phone}</th>
-		                <th contenteditable>${value.password}</th>
+		                <th>${value.password}</th>
 						<th><button class="btn btn-primary" onclick="SaveChange(${key})">Save change</button></th>
 						<th><button class="btn btn-danger" onclick="removeUser(${key})">Remove</button></th>
 				`

@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 							element.innerHTML = `<a class="nav-link me-5" href="form.html"><i class="fa-solid fa-user fa-xl"></i></a>`
 						})
 						cartLink.forEach(element => {
-							element.innerHTML = `<a class="nav-link me-5" href="cart.html"><i class="fa-solid no-ath-cart fa-cart-shopping fa-xl"></i></a>`
+							element.innerHTML = `<a class="nav-link me-5"><i class="fa-solid no-ath-cart fa-cart-shopping fa-xl"></i></a>`
 						})
 					}else{
 						cartLink.forEach(element => {
