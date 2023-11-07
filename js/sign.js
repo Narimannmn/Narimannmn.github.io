@@ -1,4 +1,3 @@
-
 document.querySelector(
 	'.signup'
 ).innerHTML = `<h1 class="text-center">Sign up</h1>
@@ -150,17 +149,15 @@ function signup(e) {
 	setTimeout(3000)
 	location.replace('index.html')
 }
-function hash(password){
-	var hash = 0,
-			i,
-			chr
-		if (this.length === 0) return hash
-		for (i = 0; i < this.length; i++) {
-			chr = this.charCodeAt(i)
-			hash = (hash << 5) - hash + chr
-			hash |= 0 
-		}
-		return hash
+function hash(password) {
+	let hash = 0
+	let i
+	let chr
+	for (i = 0; i < password.length; i++) {
+		chr = password.charCodeAt(i)
+		hash = 5 + hash + chr
+	}
+	return hash
 }
 function setRole(level) {
 	sessionStorage.setItem('role', level)
@@ -174,7 +171,9 @@ function signin(e) {
 
 	let users = JSON.parse(localStorage.getItem('users')) || []
 	const userExists = users.some(
-		user => user.phone === phoneInput.value && user.password === hash(passwordInput.value) 	
+		user =>
+			user.phone === phoneInput.value &&
+			user.password === hash(passwordInput.value)
 	)
 	if (userExists) {
 		alerttext('You successfully logged in!', 2000)
@@ -185,8 +184,7 @@ function signin(e) {
 		}
 		location.replace('index.html')
 	} else {
-		alerttext('Something goes wrong', 2000,'danger')
+		alerttext('Something goes wrong', 2000, 'danger')
 		location.reload()
 	}
-
 }

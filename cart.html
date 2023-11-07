@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    
+
     <title>OUTERTOP</title>
     <link rel="icon" type="image/png" href="images/icon1.png" />
     <link rel="stylesheet" href="css/StyleSheet1.css">
@@ -17,41 +18,42 @@
     <script src="js/main.js"></script>
 
 </head>
+
 <body>
     <div class="navDiv"></div>
-    <div class="message position-fixed top-50 start-50 translate-middle p-3 w-25 text-center" style="z-index: 11">
-                
-            </div>
-    <div class="container my-5 px-5 py-5">
-        
-        <table class="table table-light" style="min-height: 300px;">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Title and type</th>
-                    <th scope="col">image</th>
-                    <th scope="col">quantity</th>
-                    <th scope="col">price</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody class="divCart">
-                
-            </tbody>
-            <tr>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col" class="countDiv"></th>
-                <th scope="col" class="totalDiv"></th>
-                <th scope="col" ><button class="btn btn-primary" onclick="confirm('Are you sure to buy it?')">Buy</button></th>
-            </tr>
-        </table>
+    <div class="message position-fixed top-50 start-50 translate-middle p-3 w-25 text-center" style="z-index: 11"></div>
+    <div class="container my-5">
+        <div class="table-responsive">
+            <table class="table-sm table table-light ">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title and type</th>
+                        <th scope="col">image</th>
+                        <th scope="col">quantity</th>
+                        <th scope="col">price</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody class="divCart">
 
+                </tbody>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col" class="countDiv"></th>
+                    <th scope="col" class="totalDiv"></th>
+                    <th scope="col"><button class="btn btn-primary"
+                            onclick="confirm('Are you sure to buy it?')">Buy</button></th>
+                </tr>
+            </table>
+        </div>
     </div>
     <div class="footerDiv"></div>
-    <script src="js/cart.js"></script>
     <script src="js/main.js"></script>
-    
+    <script src="js/cart.js"></script>
+
 </body>
+
 </html>

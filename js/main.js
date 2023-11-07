@@ -1,87 +1,163 @@
-document.addEventListener('DOMContentLoaded', async function () {
-	const navDiv = document.querySelector('.navDiv')
-	const footDiv = document.querySelector('.footerDiv')
-	const filterDiv = document.querySelector('.filterDiv')
-	let navfoot = [
-		{
-			div: navDiv,
-			link: '/navbar.html',
-		},
-		{
-			div: footDiv,
-			link: '/footer.html',
-		},
-		{
-			div: filterDiv,
-			link: '/filter.html',
-		},
-	]
-	for (const value of navfoot) {
-		try {
-			const res = await fetch(value.link)
-			const data = await res.text()
+document.addEventListener('DOMContentLoaded', function () {
+	generateAllContent();
+	updateCartCount();
+	window.addEventListener('resize', function () {
+		generateAllContent()
+	})
+});
+
+async function generateAllContent() {
+	try {
+		const navDiv = document.querySelector('.navDiv');
+		const footDiv = document.querySelector('.footerDiv');
+		const filterDiv = document.querySelector('.filterDiv');
+		let navfoot = [
+			{
+				div: navDiv,
+				link: '/navbar.html',
+			},
+			{
+				div: footDiv,
+				link: '/footer.html',
+			},
+			{
+				div: filterDiv,
+				link: '/filter.html',
+			},
+		];
+
+		for (const value of navfoot) {
+			const res = await fetch(value.link);
+			const data = await res.text();
+
 			if (value.div) {
-				value.div.innerHTML = data
+				value.div.innerHTML = data;
+
 				if (value.link === '/navbar.html') {
-					let role = sessionStorage.getItem('role') || 0;
-					const formLink = document.querySelectorAll('.formLink')
-					const cartLink = document.querySelectorAll('.cartLink')
-					const adminLink = document.querySelectorAll('.adminLink')
-					const logoutLink = document.querySelectorAll('.logout')
-					if(role == 0){
-						formLink.forEach(element => {
-							element.innerHTML = `<a class="nav-link me-5" href="form.html"><i class="fa-solid fa-user fa-xl"></i></a>`
-						})
-						cartLink.forEach(element => {
-							element.innerHTML = `<a class="nav-link me-5"><i class="fa-solid no-ath-cart fa-cart-shopping fa-xl"></i></a>`
-						})
-					}else{
-						cartLink.forEach(element => {
-							element.innerHTML = `<a class="nav-link me-5" href="cart.html"><i class="fa-solid fa-cart-shopping fa-xl"></i></a>`
-						})
-						logoutLink.forEach(element => {
-							element.innerHTML = `<a class="nav-link me-5"><i class="fa-solid fa-x fa-xl" onclick="logout()"></i></a>`
-						})
-					}
-					if(role > 1){
-						adminLink.forEach(element => {
-							element.innerHTML = `<a class="nav-link me-5" href="admin.html"><i class="fa-solid fa-lock fa-xl"></i></a>`
-						})
-					}
+					generateNavigationalPanel();
 				}
 			}
-		} catch (error) {
-			console.error('Error fetching content:', error)
 		}
+	} catch (error) {
+		console.error('Error fetching content:', error);
 	}
-})
-function logout(){
-	sessionStorage.setItem('role', 0);
-	location.replace('index.html') 
+}
+
+
+
+function generateNavigationalPanel(){
+		let role = sessionStorage.getItem('role') || 0
+		const formLink = document.querySelectorAll('.formLink')
+		const cartLink = document.querySelectorAll('.cartLink')
+		const adminLink = document.querySelectorAll('.adminLink')
+		const logoutLink = document.querySelectorAll('.logout')
+		let widthbody = getHTMLWidth()
+		let it = getCartCount()
+		if (role == 0) {
+			formLink.forEach(element => {
+				element.innerHTML = `<a class="nav-link" href="form.html"><i class="fa-solid fa-user fa-xl"></i></a>`
+			})
+			cartLink.forEach(element => {
+				element.innerHTML = ` <div class="cart-count">${it}</div><a class="nav-link"><i class="fa-solid no-ath-cart fa-cart-shopping fa-xl"><div class="needlogin">Click User Icon to view cart!</div></i></a>`
+			})
+			adminLink.forEach(element => {
+				if (widthbody < 991) {
+					element.closest('.nav-item').style.display = 'none'
+				} else {
+					element.style.display = 'none'
+				}
+			})
+			logoutLink.forEach(element => {
+				if (widthbody < 991) {
+					element.closest('.nav-item').style.display = 'none'
+				} else {
+					element.style.display = 'none'
+				}
+			})
+		} else {
+			formLink.forEach(element => {
+				if (widthbody < 991) {
+					element.closest('.nav-item').style.display = 'none'
+				} else {
+					element.style.display = 'none'
+				}
+			})
+			cartLink.forEach(element => {
+				element.innerHTML = ` <div class="cart-count">${it}</div><a class="nav-link"  href="cart.html "><i class="fa-solid fa-cart-shopping fa-xl"></i></a>`
+			})
+			logoutLink.forEach(element => {
+				element.innerHTML = `<a class="nav-link"><i class="fa-solid fa-x fa-xl" onclick="logout()"></i></a>`
+			})
+		}
+		if (role == 1) {
+			adminLink.forEach(element => {
+				if (widthbody < 991) {
+					element.closest('.nav-item').style.display = 'none'
+				} else {
+					element.style.display = 'none'
+				}
+			})
+		}
+		if (role > 1) {
+			adminLink.forEach(element => {
+				element.innerHTML = `<a class="nav-link" href="admin.html"><i class="fa-solid fa-lock fa-xl"></i></a>`
+			})
+		}
+}
+function logout() {
+	sessionStorage.setItem('role', 0)
+	location.replace('index.html')
+}
+function getHTMLWidth() {
+
+	return document.body.clientWidth + 17
+}
+
+function updateCartCount() {
+	let cartCountElements = document.querySelectorAll('.cart-count')
+	let cartCount = getCartCount() 
+	cartCountElements.forEach(element => {
+		element.textContent = cartCount
+	})
+}
+function getCartCount() {
+	let cart = JSON.parse(localStorage.getItem('cart')) || []
+	let count = 0
+	cart.forEach(element => {
+		count += element.count
+	})
+	return count
+}
+function alerttext(text, timeout, type = 'success') {
+	const message = document.querySelector('.message')
+	message.innerHTML = `
+            <div class="alert alert-${type}" role="alert">
+                    ${text}
+                </div>
+            `
+	setTimeout(() => {
+		message.innerHTML = ''
+	}, timeout)
 }
 //
 // 	//=============================================
-	let imgs = document.querySelectorAll('.card-imgs')
-	const modal = document.querySelector('.modalblock')
-	imgs.forEach(img => {
-		img.addEventListener(
-			'mouseover',
-			event => {
-				modal.innerHTML = `
-				<div class="modal d-block" tabindex="-1">
-					<div class="modal-dialog bg-primary">
-						<div class="modal-content">
-							<div class="modal-body">
-								${img.closest('.card').innerHTML}
-							</div>
-						</div>
-					</div>
-				</div>
-				`
-			}
-		)
-		img.addEventListener('mouseout', event => {
-			modal.innerHTML = '' 
-		})
-	})
-
+// let imgs = document.querySelectorAll('.card-imgs')
+// const modal = document.querySelector('.modalblock')
+// imgs.forEach(img => {
+// 	img.addEventListener('mouseover', event => {
+// 		modal.innerHTML = `
+// 				<div class="modal d-block" tabindex="-1">
+// 					<div class="modal-dialog bg-primary">
+// 						<div class="modal-content">
+// 							<div class="modal-body">
+// 								${img.closest('.card').innerHTML}
+// 							</div>
+// 						</div>
+// 					</div>
+// 				</div>
+// 				`
+// 	})
+// 	img.addEventListener('mouseout', event => {
+// 		modal.innerHTML = ''
+// 	})
+// })

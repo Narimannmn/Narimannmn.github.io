@@ -1,26 +1,24 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <div class="container w-100 d-lg-none ">
-            <ul class="navbar justify-content-around">
+            <ul class="navbar d-flex justify-content-between">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <li class="nav-item "><a class="nav-link mx-auto navbar-brand" href="index.html">Outertop</a></li>
                 <li class="nav-item">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                    <div class="cartLink"></div>
                 </li>
                 <li class="nav-item">
-                    <div class="formLink">
-                    </div>
+                    <div class="formLink"></div>
                 </li>
                 <li class="nav-item">
-                    <div class="adminLink">
-                    </div>
+                    <div class="adminLink"></div>
                 </li>
-                <li class="nav-item navbar-brand px-auto "><a class="nav-link mx-auto" href="#"> Outertop</a></li>
                 <li class="nav-item">
-                    <div class="cartLink">
-                    </div>
+                    <div class="logout"></div>
                 </li>
             </ul>
         </div>
@@ -48,30 +46,20 @@
                 </li>
                 <li class="nav-item">
                     <div class="container-fluid d-flex search-block">
-                        <input class="search" type="search" placeholder="Search" aria-label="Search" id="search-item">
-                        <button class="search-submit me-2" >Search</button>
-                        <div class="product-list">
-                        
-                        </div>
+                        <form class="d-flex">
+                            <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search"
+                                id="search-item">
+                            <button class="btn btn-outline-info" type="submit">Search</button>
+                        </form>
+                        <div class="product-list"></div>
                     </div>
                 </li>
-
-
-                <li class="nav-item">
-                    <div class="container-fluid d-flex align-items-center">
-                        <div class="formLink">
-                        
-                        </div>
-                        <div class="cartLink">
-        
-                        </div>
-                        <div class="adminLink">
-                        
-                        </div>
-                        <div class="logout">
-                            
-                        </div>
-                        
+                <li class="nav-item" style="width: 10%;">
+                    <div class="container-fluid d-flex align-items-center justify-content-between">
+                        <div class="formLink"></div>
+                        <div class="cartLink"></div>
+                        <div class="adminLink"></div>
+                        <div class="logout"></div>
                     </div>
                 </li>
 
@@ -81,6 +69,7 @@
 </nav>
 <hr>
 <div class="collapse navbar-collapse d-lg-block" id="navbarSupportedContent">
+
     <div class="container">
         <ul class="navbar">
             <li class="nav-item dropdown dropend">
@@ -133,13 +122,8 @@
                     </li>
                     <li><a class="dropdown-item" href="#">Sales</a></li>
                 </ul>
-
-
-
-
             </li>
         </ul>
     </div>
 </div>
 <hr>
-

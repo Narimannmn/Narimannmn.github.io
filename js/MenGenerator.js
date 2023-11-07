@@ -180,21 +180,21 @@ let initApp = (arrayX, divSelector) => {
 	
 	})
 }
-const message = document.querySelector('.message')
-function alerttext(text, timeout, type = 'success') {
-	message.innerHTML = `
-            <div class="alert alert-${type}" role="alert">
-                    ${text}
-                </div>
-            `
-	setTimeout(() => {
-		message.innerHTML = ''
-	}, timeout)
-}
 function addToCart(product) {
 	let cart = JSON.parse(localStorage.getItem('cart')) || []
-	cart.push(MenProducts[product])
+	let item = {
+		discount: MenProducts[product].discount,
+		img: MenProducts[product].img,
+		title: MenProducts[product].title,
+		productCategory: MenProducts[product].productCategory,
+		newCost: MenProducts[product].newCost,
+		oldCost: MenProducts[product].oldCost,
+		count: 1,
+	}
+	cart.push(item)
 	localStorage.setItem('cart', JSON.stringify(cart))
+	updateCartCount()
 	alerttext('Product added!', 3000)
 }
 initApp(MenProducts, MenProductDiv)
+

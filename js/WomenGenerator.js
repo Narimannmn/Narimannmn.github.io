@@ -156,21 +156,21 @@ let initApp = (arrayX, divSelector) => {
 		divSelector.appendChild(newDiv)
 	})
 }
-const message = document.querySelector('.message')
-function alerttext(text, timeout) {
-	message.innerHTML = `
-            <div class="alert alert-success" role="alert">
-                    ${text}
-                </div>
-            `
-	setTimeout(() => {
-		message.innerHTML = ''
-	}, timeout)
-}
 function addToCart(product) {
 	let cart = JSON.parse(localStorage.getItem('cart')) || []
-	cart.push(WomenProducts[product])
+	let item = {
+		discount: WomenProducts[product].discount,
+		img: WomenProducts[product].img,
+		title: WomenProducts[product].title,
+		productCategory: WomenProducts[product].productCategory,
+		newCost: WomenProducts[product].newCost,
+		oldCost: WomenProducts[product].oldCost,
+		count: 1,
+	}
+	cart.push(item)
 	localStorage.setItem('cart', JSON.stringify(cart))
-	alerttext("Product added!",3000);
+	updateCartCount()
+	alerttext('Product added!', 3000)
+	
 }
 initApp(WomenProducts, WomenProductDiv)
