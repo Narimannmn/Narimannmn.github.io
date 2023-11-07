@@ -86,7 +86,16 @@ function generateNavigationalPanel(){
 				element.innerHTML = ` <div class="cart-count">${it}</div><a class="nav-link"  href="cart.html "><i class="fa-solid fa-cart-shopping fa-xl"></i></a>`
 			})
 			logoutLink.forEach(element => {
-				element.innerHTML = `<a class="nav-link"><i class="fa-solid fa-x fa-xl" onclick="logout()"></i></a>`
+				element.innerHTML = `
+				<li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="Mens.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Hello, ${sessionStorage.getItem('uname')}!
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="Mens.html" onclick="logout()">Logout</a></li>
+                                </ul>
+                            </li>
+				`
 			})
 		}
 		if (role == 1) {

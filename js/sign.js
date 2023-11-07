@@ -144,6 +144,7 @@ function signup(e) {
 	let users = JSON.parse(localStorage.getItem('users')) || []
 	users.push(user)
 	localStorage.setItem('users', JSON.stringify(users))
+	sessionStorage.setItem('uname',nameInput.value)
 	setRole(1)
 	alerttext('You have been succesfully sign up', 4000)
 	setTimeout(3000)
@@ -177,6 +178,7 @@ function signin(e) {
 	)
 	if (userExists) {
 		alerttext('You successfully logged in!', 2000)
+		sessionStorage.setItem('uname', nameInput.value)
 		if (admin_phones.includes(phoneInput.value)) {
 			setRole(2)
 		} else {

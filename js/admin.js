@@ -40,8 +40,9 @@ function addUser() {
 		password: 'Password',
 	}
 	let newDiv = document.createElement('tr')
+	newDiv.classList.add('table-primary')
 	newDiv.innerHTML = `
-		                <th contenteditable>${users.length}</th>
+		                <th contenteditable>${users.length + 1}</th>
 		                <th contenteditable>${newUser.name}</th>
 		                <th contenteditable>${newUser.phone}</th>
 		                <th contenteditable>${newUser.password}</th>
