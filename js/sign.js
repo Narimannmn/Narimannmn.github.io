@@ -67,7 +67,7 @@ document.querySelector('.signinBtn').addEventListener('click', function () {
 		'.signin'
 	).innerHTML = `<h1 class="text-center">Sign in</h1>
     
-													<form onsubmit="signin()">
+													<form onsubmit="signin()" style="height: 300px;">
 														<div class="form-group">
 															<label>Phone number</label>
 															<input type="text" id="inphone" required class="form-control border-info">
@@ -171,14 +171,14 @@ function signin(e) {
 	passwordInput.classList.remove('is-invalid')
 
 	let users = JSON.parse(localStorage.getItem('users')) || []
-	const userExists = users.some(
+	const userExists = users.find(
 		user =>
 			user.phone === phoneInput.value &&
 			user.password === hash(passwordInput.value)
 	)
 	if (userExists) {
 		alerttext('You successfully logged in!', 2000)
-		sessionStorage.setItem('uname', nameInput.value)
+		sessionStorage.setItem('uname', userExists.name)
 		if (admin_phones.includes(phoneInput.value)) {
 			setRole(2)
 		} else {

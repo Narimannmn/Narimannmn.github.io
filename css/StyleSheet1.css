@@ -273,6 +273,6 @@ section {
 	background-color: red;
 	text-align: center;
 }
-.nav-link{
+.dropdown .nav-link{
 	color: #32b6e1 !important;
 }
