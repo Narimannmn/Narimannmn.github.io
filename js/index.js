@@ -96,7 +96,17 @@ let salehit = [
 		oldCost: 83990,
 	},
 ]
-
+function alerttext(text, timeout, type = 'success') {
+	const message = document.querySelector('.message')
+	message.innerHTML = `
+            <div class="alert alert-${type}" role="alert">
+                    ${text}
+                </div>
+            `
+	setTimeout(() => {
+		message.innerHTML = ''
+	}, timeout)
+}
 let initApp = (arrayX, divSelector) => {
 	arrayX.forEach((value, key) => {
 		let newDiv = document.createElement('div')

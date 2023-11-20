@@ -184,10 +184,21 @@ let initApp = (arrayX, divSelector) => {
 	})
 }
 
+function alerttext(text, timeout, type = 'success') {
+	const message = document.querySelector('.message')
+	message.innerHTML = `
+            <div class="alert alert-${type}" role="alert">
+                    ${text}
+                </div>
+            `
+	setTimeout(() => {
+		message.innerHTML = ''
+	}, timeout)
+}
 function addToCart(product) {
 	let cart = JSON.parse(localStorage.getItem('cart')) || []
 	let item = {
-		discount: WomenProductsProducts[product].discount,
+		discount: WomenProducts[product].discount,
 		img: Array.isArray(WomenProducts[product].img)
 			? WomenProducts[product].img[0]
 			: MenProducts[product].img,
