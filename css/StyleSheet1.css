@@ -90,6 +90,8 @@ video {
 
 html {
 	height: 100%;
+	font-family: 'Montserrat', sans-serif;
+	
 }
 /* always display scrollbars */
 body {
@@ -283,4 +285,8 @@ section {
 }
 .carousel-control-next-icon{
 	background-color: black;
+}
+*{font-family: 'Montserrat', sans-serif !important;}
+.fa-solid{
+	font-family: "Font Awesome 6 Free" !important;
 }
