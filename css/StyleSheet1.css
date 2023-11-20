@@ -124,6 +124,7 @@ section {
 }
 .navbar-brand {
 	font-size: 1.8rem !important;
+	color: #32b6e1 !important;
 }
 #navbar-brand {
 	height: 60px;
@@ -275,4 +276,11 @@ section {
 }
 .dropdown .nav-link{
 	color: #32b6e1 !important;
+
+}
+.carousel-control-prev-icon{
+	background-color: black;
+}
+.carousel-control-next-icon{
+	background-color: black;
 }

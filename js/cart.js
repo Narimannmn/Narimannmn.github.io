@@ -24,7 +24,7 @@ const reloadCart = () => {
 			const countdiv = document.querySelector('.countDiv')
 			const totaldiv = document.querySelector('.totalDiv')
 			countdiv.innerHTML = `In the basket ` + i + ' items'
-			totaldiv.innerHTML = 'Total price:' + totalPrice
+			totaldiv.innerHTML = 'Total price: ' + totalPrice + ' tg'
 		})
 	} else {
 		alerttext('Car is empty', 3000, 'danger')

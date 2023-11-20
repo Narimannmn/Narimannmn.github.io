@@ -8,18 +8,18 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <li class="nav-item "><a class="nav-link mx-auto navbar-brand" href="index.html">Outertop</a></li>
-                <li class="nav-item">
-                    <div class="cartLink"></div>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle logout" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item"><a style="color: black; text-decoration: none;"><div class="formLink"></div></a></li>
+                        <li class="dropdown-item"><a style="color: black; text-decoration: none;"><div class="cartLink"></div></a></li>
+                        <li class="dropdown-item"><a style="color: black; text-decoration: none;"><div class="adminLink"></div></a></li>
+                        <li class="dropdown-item logoutbtn"><a  onclick="logout()">Logout</a></li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <div class="formLink"></div>
-                </li>
-                <li class="nav-item">
-                    <div class="adminLink"></div>
-                </li>
-                <li class="nav-item">
-                    <div class="logout"></div>
-                </li>
+                
             </ul>
         </div>
 
