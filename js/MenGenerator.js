@@ -155,8 +155,8 @@ let initApp = (arrayX, divSelector) => {
 							)
 							.join('')}
           </div>
-          <button class="carousel-control-prev" style = 'color:black' type="button" data-bs-target="#carousel-${key}" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true" style></span>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carousel-${key}" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
           <button class="carousel-control-next" type="button" data-bs-target="#carousel-${key}" data-bs-slide="next">
