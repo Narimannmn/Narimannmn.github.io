@@ -61,3 +61,103 @@ cards.forEach(card => {
 	showImage(currentImageIndex)
 })
 //===============================================================================
+const salehitdivs = document.querySelector('.sale-hit')
+let salehit = [
+	{
+		discount: '-60%',
+		img: ['images/w15.jpg', 'images/w15.1.jpg', 'images/w15.2.jpg'],
+		title: 'BRASKA',
+		productCategory: 'Sneakers for the city',
+		newCost: 19600,
+		oldCost: 48990,
+	},
+	{
+		discount: '-60%',
+		img: ['images/w16.jpg', 'images/w16.1.jpg', 'images/w16.2.jpg'],
+		title: 'GEOX',
+		productCategory: 'Sneakers for the city',
+		newCost: 26400,
+		oldCost: 65990,
+	},
+	{
+		discount: '-60%',
+		img: ['images/m15.jpg', 'images/m15.1.jpg', 'images/m15.2.jpg'],
+		title: 'TESORO',
+		productCategory: 'Sneakers for the city',
+		newCost: 14000,
+		oldCost: 34990,
+	},
+	{
+		discount: '-60%',
+		img: ['images/m16.jpg', 'images/m16.1.jpg', 'images/m16.2.jpg'],
+		title: 'ECCO',
+		productCategory: 'Sneakers for the city',
+		newCost: 33600,
+		oldCost: 83990,
+	},
+]
+
+let initApp = (arrayX, divSelector) => {
+	arrayX.forEach((value, key) => {
+		let newDiv = document.createElement('div')
+		newDiv.classList.add('col', 'col-md-3', 'col-sm-6', 'mb-1')
+
+		newDiv.innerHTML = `
+      <div class="card">
+        <div id="carousel-${key}" class="carousel slide">
+          <div class="carousel-inner">
+            ${value.img
+							.map(
+								(img, index) => `
+              <div class="carousel-item${index === 0 ? ' active' : ''}">
+                <img src="${img}" class="card-img-top card-imgs" alt="...">
+              </div>
+            `
+							)
+							.join('')}
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carousel-${key}" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carousel-${key}" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">${value.title}</h5>
+          <p class="card-text product-category" style="color: grey;">${
+						value.productCategory
+					}</p>
+          <p class="card-text"><span class="discount">${
+						value.discount
+					}</span></p>
+          <p class="card-text"><span class="new-cost">${
+						value.newCost
+					}</span><span class="old-cost">${value.oldCost}</span></p>
+          <a class="btn btn-primary" onclick="addToCart(${key})">Shopping cart</a>
+        </div>
+      </div>
+    `
+		divSelector.appendChild(newDiv)
+	})
+}
+
+function addToCart(product) {
+	let cart = JSON.parse(localStorage.getItem('cart')) || []
+	let item = {
+		discount: salehit[product].discount,
+		img: salehit[product].img[0],
+		title: salehit[product].title,
+		productCategory: salehit[product].productCategory,
+		newCost: salehit[product].newCost,
+		oldCost: salehit[product].oldCost,
+		count: 1,
+	}
+	cart.push(item)
+	localStorage.setItem('cart', JSON.stringify(cart))
+	updateCartCount()
+	alerttext('Product added!', 3000)
+}
+initApp(salehit, salehitdivs)

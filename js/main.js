@@ -174,6 +174,8 @@ function alerttext(text, timeout, type = 'success') {
 		message.innerHTML = ''
 	}, timeout)
 }
+
+
 //
 // 	//=============================================
 // let imgs = document.querySelectorAll('.card-imgs')
