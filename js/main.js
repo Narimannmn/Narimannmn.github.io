@@ -84,7 +84,7 @@ function generateNavigationalPanel(){
 			
 			if (role == 1) {
 				adminLink.forEach(element => {
-					element.closest('.nav-item').style.display = 'none'
+					element.closest('li').style.display = 'none'
 				})
 			}
 			if (role > 1) {

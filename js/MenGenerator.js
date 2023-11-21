@@ -195,7 +195,19 @@ function addToCart(product) {
 		oldCost: MenProducts[product].oldCost,
 		count: 1,
 	}
-	cart.push(item)
+	let existingItem = cart.find(cartItem => {
+		return (
+			cartItem.title === item.title &&
+			cartItem.productCategory === item.productCategory &&
+			cartItem.newCost === item.newCost &&
+			cartItem.oldCost === item.oldCost
+		)
+	})
+	if (existingItem) {
+		existingItem.count += 1
+	} else {
+		cart.push(item)
+	}
 	localStorage.setItem('cart', JSON.stringify(cart))
 	updateCartCount()
 	alerttext('Product added!', 3000)
