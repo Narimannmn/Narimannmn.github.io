@@ -1,5 +1,5 @@
 // timer code
-const promotionEndDate = new Date('2023-11-20T23:59:59')
+const promotionEndDate = new Date('2023-12-20T23:59:59')
 
 function updateTimer() {
 	const now = new Date()
@@ -146,6 +146,33 @@ let initApp = (arrayX, divSelector) => {
           <p class="card-text"><span class="new-cost">${
 						value.newCost
 					}</span><span class="old-cost">${value.oldCost}</span></p>
+					<div class="col-12 my-2">
+        <p>Size:</p>    
+        <div class="form-check form-check-inline">
+            <input class="form-check-input border border-primary" type="radio" name="inlineCheckbox${
+							key + 1
+						}" value="S">
+            <label class="form-check-label" for="inlineCheckbox${
+							key + 1
+						}">S</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input border border-primary" type="radio" name="inlineCheckbox${
+							key + 1
+						}" value="M">
+            <label class="form-check-label" for="inlineCheckbox${
+							key + 1
+						}">M</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input border border-primary" type="radio" name="inlineCheckbox${
+							key + 1
+						}" value="L">
+            <label class="form-check-label" for="inlineCheckbox${
+							key + 1
+						}">L</label>
+        </div>
+    </div>
           <a class="btn btn-primary" onclick="addToCart(${key})">Shopping cart</a>
         </div>
       </div>
@@ -156,6 +183,9 @@ let initApp = (arrayX, divSelector) => {
 
 function addToCart(product) {
 	let cart = JSON.parse(localStorage.getItem('cart')) || []
+	const selectedSize = document.querySelector(
+		`input[name="inlineCheckbox${product + 1}"]:checked`
+	)
 	let item = {
 		discount: salehit[product].discount,
 		img: salehit[product].img[0],
@@ -165,12 +195,20 @@ function addToCart(product) {
 		oldCost: salehit[product].oldCost,
 		count: 1,
 	}
+	if (selectedSize) {
+		item.size = selectedSize.value
+	} else {
+		alerttext('Please select a size before adding to the cart', 1500, 'danger')
+		return
+	}
+
 	let existingItem = cart.find(cartItem => {
 		return (
 			cartItem.title === item.title &&
 			cartItem.productCategory === item.productCategory &&
 			cartItem.newCost === item.newCost &&
-			cartItem.oldCost === item.oldCost
+			cartItem.oldCost === item.oldCost &&
+			cartItem.size === item.size
 		)
 	})
 	if (existingItem) {
